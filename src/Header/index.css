@@ -1,0 +1,29 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 15%;
+	width: 90%;
+}
+
+#title {
+	font-size: 60px;
+	font-weight: bold;
+}
+
+.header-login {
+	align-self: center;
+	font-size: calc(18px + 1.0vw);
+}
+
+.header a {
+	text-decoration: none;
+}
+
+.header a:visited {
+	color: white;
+}
+
+.header a:hover {
+	background-color: white;
+	color: pink;
+}

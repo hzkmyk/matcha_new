@@ -1,0 +1,77 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.formpart {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 2px solid rgb(221, 217, 217);
+	background-color: white;
+	width: 50%;
+	min-width: 300px;
+	margin-top: 5%;
+}
+
+.x {
+	align-self: flex-end;
+	padding-right: 5%;
+	font-size: 40px;
+}
+
+.x a:link {
+	text-decoration: none;
+}
+
+.x a:visited {
+	color: black;
+}
+
+.x a:hover {
+	font-family: 'Knewave', Helvetica;
+	color: rgb(155, 18, 18);
+}
+
+#signuplogo {
+	font-size: 70px;
+	padding: 5% 0;
+	font-weight: bold;
+}
+
+.red {
+	color: pink;
+}
+
+#getstarted {
+	font-size: 30px;
+}
+
+.formpart form {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin: 10% 5%;
+}
+
+.formpart input {
+	height: 40px;
+	margin-bottom: 15px;
+	padding-inline-start: 5%;
+	font-size: 15px;
+	border: 2px solid rgb(221, 217, 217);
+}
+
+#signupsubmit {
+	font-size: 20px;
+	margin-top: 15px;
+	background-color: pink;
+	color: white;
+	padding: 10px 0;
+	font-family: 'IBM Plex Mono', Helvetica;
+}
+
+.existinguser {
+	padding-bottom: 50px;
+}
