@@ -27,7 +27,12 @@ class Login extends Component {
 							type="password"
 							placeholder="Password"
 						/>
-						<button type="submit">Log In to Matcha</button>
+						<button
+							type="submit"
+							id="loginbutton"
+						>
+							Log In to Matcha
+						</button>
 					</form>
 				</div>
 			</div>

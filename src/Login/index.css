@@ -6,15 +6,23 @@
 
 .login input {
 	height: 40px;
-	padding: 0 5px;
+	padding-inline-start: 5px;
 	margin-bottom: 15px;
+	border: 2px solid rgb(221, 217, 217);
+}
+
+#loginbutton {
+	border: 2px solid rgb(221, 217, 217);
+	font-family: 'IBM Plex Mono', Helvetica;
+	margin-top: 10px;
+	padding: 10px;
 }
 
 .loginheader {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-evenly;
-	margin: 25% 0;
+	justify-content: center;
+	margin: 20% 0;
 }
 
 .loginheader a {
@@ -29,6 +37,7 @@
 	font-size: 60px;
 	font-weight: bold;
 	align-self: center;
+	margin: 0 5%;
 }
 
 .header-login {
