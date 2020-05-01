@@ -1,0 +1,122 @@
+syntax = "proto3";
+package matcha;
+//import "google/api/annotations.proto";
+//import "google/protobuf/timestamp.proto";
+
+
+service forgotPassword {
+  rpc sendEmail (sendEmailRequest) returns (Reply);
+  rpc resetPassword (resetPassRequest) returns (Reply);
+}
+message resetPassRequest {
+  string email = 1;
+  string newPass = 2;
+  string hash = 3;
+}
+message sendEmailRequest {
+  string email = 1;
+}
+service createAccount {
+  rpc create (createRequest) returns (Reply);
+  rpc verify (verifyRequest) returns(Reply);
+}
+message createRequest{
+  string userName = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string password = 4;
+  string email = 5;
+}
+message verifyRequest {
+  string email = 1;
+  string hash = 2;
+}
+service Account {
+  rpc test2(empty) returns (stream Reply);
+  rpc getUser (userID) returns (User);//use useID message
+  rpc getImages (imageRequest) returns (stream imageData);
+  rpc updateUser (User) returns (Reply);
+  rpc verifyNewEmail (verifyRequest) returns (Reply);
+  rpc updateImage (imageData) returns (Reply);
+  rpc feed (browseRequest) returns(stream User);
+  rpc loginUser (loginRequest) returns(Session);
+  rpc getLikedStatus (userID) returns (likedStatus); //use useID message
+  rpc likeUser (userID) returns (likedStatus);//use useID message
+  rpc blockUser (userID) returns (Reply);
+  rpc test (testing) returns (Reply);
+  // deleteUser
+}
+message browseRequest {
+    string location = 1;
+    int32 minAge = 2;
+    int32 MaxAge = 3;
+    repeated string tags = 4;
+    int32 minFameRating = 5;
+    int32 MaxFameRating = 6;
+}
+message likedStatus {
+  bool bothLiked = 1;
+  bool ILiked = 2;
+}
+message testing {
+  string message = 1;
+  string arg1 = 2;
+  string arg2 = 3;
+  string arg3 = 4;
+  string arg4 = 5;
+  string arg5 = 6;
+}
+message imageRequest {
+  int64 userID = 1;
+  bool all = 2;
+}
+message imageData {
+  bytes image = 1;
+  int32 index = 2;
+}
+message empty {
+}
+message loginRequest {
+  string userName = 1;
+  string password = 2;
+}
+message User {
+  int32 id = 1;
+  string userName = 2;
+  string firstName = 3;
+  string lastName = 4;
+  string password = 5;
+  string email = 6;
+  string gender = 7;
+  string preference = 8;
+  string bio = 9;
+  string hash = 10;
+  repeated string tags = 11;
+  repeated int32 seenHistory = 12;
+  int32 fameRating = 13;
+  int32 age = 14;
+  string location = 15;
+  string test = 16;
+  // @inject_tag: sql:"type:timestamptz,default:now()"
+ // google.protobuf.Timestamp created_at = 11;
+  // @inject_tag: sql:"type:timestamptz"
+ // google.protobuf.Timestamp updated_at = 12;
+  //fame rating
+  //array of recently view
+  //Array of liked people
+  //array of tags
+  //location
+  //pictures??
+//  google.protobuf.Timestamp created_at = 5;
+//  google.protobuf.Timestamp updated_at = 6;
+}
+message userID {
+  int32 userID = 1;
+}
+message Session {
+  int32 userID = 1;
+  string sessionID = 2;
+}
+message Reply {
+  string message = 1;
+}

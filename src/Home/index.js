@@ -9,7 +9,7 @@ class Home extends Component {
 		return(
 		<div className="main" style={{backgroundImage: `url(${BackgroundImage})`}}>
 			<div className="header">
-				<div id="title">MATCH<span class="red">A</span></div>
+				<div id="title">MATCH<span className="red">A</span></div>
 				<div className="header-login"><Link to="login">Login</Link></div>
 			</div>
 			<div className="slogan">

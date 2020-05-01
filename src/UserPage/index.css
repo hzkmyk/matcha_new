@@ -1,0 +1,32 @@
+.userprofilepage {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.imagegallery {
+	margin: 20px;
+}
+
+.prof {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.profTop {
+	font-size: calc(12px + 1.2vw);
+}
+
+.profName {
+	font-weight: bold;
+}
+
+.profBio {
+	margin: 10px 0 20px 0;
+	font-size: calc(12px + 0.5vw);
+}
+
+.genPrefBio {
+	margin: 10px 0;
+}

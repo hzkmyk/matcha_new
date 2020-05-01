@@ -18,6 +18,11 @@
 	margin: 10% 0 1% 0;
 }
 
+.signuplink {
+	display: flex;
+	justify-content: center;
+}
+
 .signuplink a {
 	font-size: calc(10px + 1.5vw);
 	font-weight: bold;

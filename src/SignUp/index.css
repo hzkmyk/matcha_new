@@ -1,7 +1,16 @@
-.main {
+.signuppage {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-items: center;
+	min-height: 100vh;
+}
+
+.signupmain {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-grow: 1;
 }
 
 .formpart {
@@ -10,28 +19,10 @@
 	align-items: center;
 	border: 2px solid rgb(221, 217, 217);
 	background-color: white;
-	width: 50%;
+	width: 80%;
+	height: 100%;
 	min-width: 300px;
-	margin-top: 5%;
-}
-
-.x {
-	align-self: flex-end;
-	padding-right: 5%;
-	font-size: 40px;
-}
-
-.x a:link {
-	text-decoration: none;
-}
-
-.x a:visited {
-	color: black;
-}
-
-.x a:hover {
-	font-family: 'Knewave', Helvetica;
-	color: rgb(155, 18, 18);
+	margin: 15% 0;
 }
 
 #signuplogo {
@@ -52,7 +43,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 80%;
-	margin: 10% 5%;
+	margin: 10% 5% 5% 10%;
 }
 
 .formpart input {
@@ -74,4 +65,11 @@
 
 .existinguser {
 	padding-bottom: 50px;
+	font-size: calc(10px + 0.5vw);
+}
+
+.agree {
+	margin: 0 50px 20px 50px;
+	font-size: 10px;
+	text-align: center;
 }

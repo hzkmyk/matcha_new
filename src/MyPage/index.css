@@ -1,0 +1,19 @@
+.myprofilepage {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.imagegallery {
+	margin: 20px;
+}
+
+.prof {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.profName {
+	font-size: calc(12px + 1.2vw);
+}

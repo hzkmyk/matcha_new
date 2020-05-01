@@ -1,0 +1,57 @@
+.forgotpasswordpage {
+	min-height: 100%;
+	align-items: stretch;
+}
+
+.forgotpasswordcontents {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20%;
+	justify-self: center;
+	padding: 20px;
+	width: calc(100%- 10px);
+	background-color: white;
+	min-width: 256px;
+}
+
+.forgotpasswordcontents form {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+}
+
+.forgotpasswordcontents label {
+	font-size: calc(12px);
+	color: grey;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.forgotpasswordcontents input {
+	padding: 8px;
+	margin-bottom: 20px;
+	font-size: 14px;
+	border: 1px solid lightgray;
+}
+
+.forgotpasswordcontents button {
+	border: 1px solid pink;
+	padding: 5px 0;
+}
+
+.forgotpasswordcontents a {
+	text-decoration: none;
+	color: pink;
+	font-weight: bold;
+	font-size:calc(10px + 0.4vw);
+	font-family: 'IBM Plex Mono', Helvetica;
+}
+
+.forgotpasswordcontents a:visited {
+	color: pink;
+	text-decoration: none;
+}
