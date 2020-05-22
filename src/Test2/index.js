@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import TopBar from "./components/TopBar";
 import FooterMenu from "./components/FooterMenu";
 import Content from "./components/Content";
 import Sidebar from "./components/Sidebar";
 import { Head } from "../Head";
+import { Link } from 'react-router-dom'
 
 class Test2 extends Component {
 	constructor(props) {
@@ -49,7 +49,7 @@ class Test2 extends Component {
 
     const menuItems = [
       { icon: `G`, text: "General Info" },
-      { icon: `P`, text: "Profile" },
+      { icon: `P`, text: <Link to="mypage/profile">Profile</Link> },
       { icon: `I`, text: "Images" },
 		];
 

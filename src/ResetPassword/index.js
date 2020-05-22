@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-const { forgotPasswordClient } = require('../matcha_grpc_web_pb');
 const { resetPassRequest } = require('../matcha_pb');
 
 export default class ResetPassword extends Component {
@@ -13,7 +12,6 @@ export default class ResetPassword extends Component {
 	}
 
 	resetPass = () => {
-		const client = new forgotPasswordClient('http://192.168.43.23:8080');
 		const request = new resetPassRequest();
 		const pathArray = window.location.search;
 		const urlParams = new URLSearchParams(pathArray);
@@ -22,7 +20,7 @@ export default class ResetPassword extends Component {
 		request.setEmail(updatedEmail);
 		request.setHash(updatedHash);
 		request.setNewpass(this.state.newPass2);
-		client.resetPassword(request, {}, (err, reply) => {
+		window.FPC.resetPassword(request, {}, (err, reply) => {
 			if (err) {
 				console.log(err.code);
 				console.log(err.message);

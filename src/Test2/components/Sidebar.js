@@ -5,9 +5,8 @@ const Sidebar = ({ menuItems, styles }) => {
     height: "100vh",
     width: styles.sidebarWidth,
     position: "fixed",
-    backgroundColor: "#333",
     paddingTop: 40,
-    backgroundColor: "pink"
+    backgroundColor: "#f6d1e2"
   };
 
   const menuItemStyle = {
@@ -21,14 +20,6 @@ const Sidebar = ({ menuItems, styles }) => {
   const iconStyle = {
     fontSize: 26,
     marginRight: styles.sidebarCollapsed ? 0 : 10
-  };
-
-  const logoStyle = {
-    textAlign: "center",
-    color: styles.white(),
-    fontSize: 34,
-    marginBottom: 60,
-    fontWeight: "bold"
   };
 
   return (

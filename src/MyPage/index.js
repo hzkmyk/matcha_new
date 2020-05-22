@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ImageGallery from 'react-image-gallery';
 import { withCookies } from 'react-cookie';
 import "../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 import './index.css'

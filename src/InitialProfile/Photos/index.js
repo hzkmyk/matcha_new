@@ -9,7 +9,8 @@ class InitialPhoto extends Component {
 		super(props);
 		this.state = {
 			names: [],
-			images: []
+			images: [],
+			index: 0
 		}
 	}
 
@@ -27,7 +28,13 @@ class InitialPhoto extends Component {
 			})
 			const result = await promise;
 			const arr = result.split(",");
-			joined = this.state.images.concat(arr[1]);
+			// if (this.state.images[this.state.index]) {
+				joined = this.state.images.concat(arr[1]);
+			// } else {
+			// 	let temp1	 = this.state.images.slice(0, this.state.index)
+			// 	let temp2 = this.state.images.slice(this.state.index, this.state.index + this.state.images.length)
+			// 	joined = temp1.push(arr[1]).concat(temp2)
+			// }
 			this.setState({ images: joined });
 		}
 	}
@@ -57,10 +64,39 @@ class InitialPhoto extends Component {
 		this.props.history.push('../feed');
 	}
 
+
+	Drop = (num) => {
+		return (
+		<Dropzone
+			onDrop={this.onDrop}
+			accept="image/png, image/jpeg, image/jpg"
+			minSize={0}
+			maxSize={5242800}
+		>
+			{({getRootProps, getInputProps, isDragActive, isDragReject, rejectedFiles}) => {
+				const isFileTooLarge = rejectedFiles.length > 0 && rejectedFiles[0].size > 5242800;
+				return (
+					<div {...getRootProps()}>
+						<input {...getInputProps()} />
+						{!isDragActive && 'upload'}
+						{isDragActive && !isDragReject && "Drop it like it's hot!"}
+						{isDragReject && "File type not accepted, sorry!"}
+						{isFileTooLarge && (
+							<div className="text-danger mt-2">
+								File is too large.
+							</div>
+						)}
+					</div>
+				)}
+			}
+		</Dropzone>
+		)
+	}
+
 	render() {
-		const maxSize = 5242880;
 		const images = this.state.images;
-		const Example = ({ data }) => <img src={`data:image/jpeg;base64, ${data}`} alt="" width="200" />
+		const Photos = ({ data }) => <img src={`data:image/jpeg;base64, ${data}`} alt="" width="200" />
+		
 		return (
 			<div className="initialphotopage">
 				<header>
@@ -71,35 +107,22 @@ class InitialPhoto extends Component {
 						Photos of Yourself
 					</div>
 					<div className="initdrop">
-						<Dropzone
-							onDrop={this.onDrop}
-							accept="image/png, image/jpeg, image/jpg"
-							minSize={0}
-							maxSize={maxSize}
-						>
-							{({getRootProps, getInputProps, isDragActive, isDragReject, rejectedFiles}) => {
-								const isFileTooLarge = rejectedFiles.length > 0 && rejectedFiles[0].size > maxSize;
-								return (
-									<div {...getRootProps()}>
-										<input {...getInputProps()} />
-										{!isDragActive && 'Click here or drop a file to upload!'}
-										{isDragActive && !isDragReject && "Drop it like it's hot!"}
-										{isDragReject && "File type not accepted, sorry!"}
-										{isFileTooLarge && (
-											<div className="text-danger mt-2">
-												File is too large.
-											</div>
-										)}
-									</div>
-								)}
-							}
-						</Dropzone>
+						<div className="photo"><Photos data={images[0]} /></div>
+						<div className="dropzone">{this.Drop(0)}</div>
+						<div className="photo"><Photos data={images[1]} /></div>
+						<div className="dropzone">{this.Drop(1)}</div>
+						<div className="photo"><Photos data={images[2]} /></div>
+						<div className="dropzone">{this.Drop(2)}</div>
+						<div className="photo"><Photos data={images[3]} /></div>
+						<div className="dropzone">{this.Drop(3)}</div>
+						<div className="photo"><Photos data={images[4]} /></div>
+						<div className="dropzone">{this.Drop(4)}</div>
 					</div>
-					<div>
+					{/* <div>
 						{images.map((image, i) => {
-							return <div key={i}><Example data={image} /></div>
+							return <div key={i}><Photos data={image} /></div>
 						})}
-					</div>
+					</div> */}
 				</div>
 				<button
 					type="submit"

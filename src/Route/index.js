@@ -18,8 +18,8 @@ import UserPage from '../UserPage';
 import MyPage from '../MyPage';
 import UpdateEmail from '../UpdateEmail';
 import VerifyNewEmail from '../VerifyNewEmail';
-import Test2 from '../Test2';
-import EmailUpdate from '../Test2/EmailUpdate';
+// import Test2 from '../Test2';
+import Whyy from '../Test2/why.js';
 
 class MyRoute extends Component {
 	render() {
@@ -33,17 +33,17 @@ class MyRoute extends Component {
 				<Route exact path='/initial_profile' component={InitialProfile} />
 				<Route exact path='/initial_profile/photos' component={InitialPhoto} />
 				<Route exact path='/test' component={Test} />
-				<Route exact path='/test2' component={Test2} />
+				{/* <Route exact path='/test2' component={Test2} /> */}
 				<Route exact path='/forgotpassword' component={LostPasswod} />
 				<Route path='/reset' component={ResetPasswod} />
 				<Route path='/invalid' component={InvalidLink} />
 				<Route path='/success' component={Success} />
 				<Route path='/feed' component={Feed} />
 				<Route path='/user' component={UserPage} />
-				<Route path='/mypage' component={MyPage} />
+				<Route exact path='/mypage' component={MyPage} />
+				<Route exact path='/mypage/profile' component={Whyy} />
 				<Route path="/updateemailinfo" component={UpdateEmail} />
 				<Route path='/updateEmail' component={VerifyNewEmail} />
-				<Route path='/test2/verifynewemail' component={EmailUpdate} />
 			</Router>
 		);
 	}

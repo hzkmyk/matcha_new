@@ -1,32 +1,19 @@
 import React, { Component } from "react";
 import { withCookies } from 'react-cookie';
+import "../../MyPage/index.css"
+import "./index.css"
 const { User } = require('../../matcha_pb');
-const { imageRequest } = require('../../matcha_pb');
-const request = new User();
+	const request = new User();
 
 class Content extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			username: 'Username',
 			firstName: 'First Name',
 			lastName: 'Last Name',
-			gender: 'Gender',
 			email: 'Email Address',
-			preference: 'Interested in',
-			interests: [],
-			bio: 'Bio',
-			age: 20,
-			pics: [],
-			fameRating: 50,
-			location: 'Location',
-			seenHistory: [],
-			data: [],
-			images: [{
-				original: '',
-				thumbnail: ''
-			}],
+			style: "none"
 			// uid: this.props.cookies.get('uid'),
 			// session_id: this.props.cookies.get('session_id')
 		}
@@ -39,7 +26,6 @@ class Content extends Component {
 
 	componentDidMount() {
 		this.getUserInfo();
-		this.allSet();
 	}
 
 	updateUserInfo = (updatedInfo) => {
@@ -51,6 +37,7 @@ class Content extends Component {
 		}
 		switch (updatedInfo) {
 			case 'username':
+				console.log("updating userinfo", this.state.username)
 				request.setUsername(this.state.username);
 				break;
 			case 'firstName':
@@ -62,17 +49,27 @@ class Content extends Component {
 			case 'email':
 				request.setEmail(this.state.email);
 				break;
+			default:
+				break;
+		}
+		if (updatedInfo === 'email') {
+			this.changeStyle();
 		}
 		window.Aclient.updateUser(request, metaData, (err, reply) => {
 			if (err) {
 				console.log(err.code, err.message);
 			} else {
 				console.log(reply.getMessage());
-				if (updatedInfo == 'email') {
-					this.props.history.push('/verifynewemail');
-				}
 			}
 		})
+	}
+
+	changeStyle = () => {
+		if (this.state.style === "none" || this.state.style === "inline") {
+			this.setState({ style: "block" })
+		} 	else if (this.state.style === "block") {
+			this.setState({ style: "none" })
+		}
 	}
 
 	getUserInfo = () => {
@@ -89,60 +86,12 @@ class Content extends Component {
 				console.log(err.message);
 			} else {
 				this.setState({
-					username: reply.getUsername(),
 					firstName: reply.getFirstname(),
 					lastName: reply.getLastname(),
 					email: reply.getEmail(),
-					gender: reply.getGender(),
-					preference: reply.getPreference(),
-					age: reply.getAge(),
-					fameRating: reply.getFamerating(),
-					location: reply.getLocation(),
-					interests: reply.getTagsList(),
-					bio: reply.getBio(),
-					seenHistory: reply.getSeenhistoryList()
 				});
 			}
 		})
-	}
-
-	getImages = () => {
-		return new Promise((resolve, reject) => {
-			const request = new imageRequest();
-			let arr = [];
-			const uid = this.props.cookies.get('uid');
-			const session_id = this.props.cookies.get('session_id');
-			const metaData = {
-				'user_id': uid,
-				'session_id': session_id
-			}
-			request.setUserid(uid);
-			request.setAll(true);
-			const stream = window.Aclient.getImages(request, metaData);
-			stream.on('data', function(response) {
-				const d = response.getImage_asB64();
-				arr.push(d);
-			});
-			stream.on('status', function(response) {
-				console.log(response.code);
-				console.log(response.detail);
-			});
-			stream.on('error', function(err) {
-				console.log(`error: ${err.message} code is: ${err.code}`);
-			});
-			stream.on('end', function(){
-				resolve(arr);
-			})
-		})
-	}
-	
-	allSet = async () => {
-		try {
-			const data = await this.getImages();
-			this.setState({data});
-		} catch(error) {
-			console.log(error.response);
-		}
 	}
 
 	render() {
@@ -152,29 +101,27 @@ class Content extends Component {
 			paddingBottom: 80,
 			paddingLeft: this.props.style.showSidebar? 200 : 10
 		};
-		const images = this.state.data;
-		let combined = [];
-		for (let i = 1; i < images.length; i++) {
-			let temp = {...this.state.images};
-			temp.original = "data:image/jpeg;base64," + images[i];
-			temp.thumbnail = "data:image/jpeg;base64," + images[i];
-			combined.push(temp);
-		}
+
 		return (
 			<div className="myprofilepage" style={contentStyle}>
+				<div className="myprofilepagecon">
 				<form
 					onSubmit={e => {
 						e.preventDefault();
 						this.updateUserInfo('firstName');
 					}}
 				>
-					<span>First Name: </span>
-					<input
-						type="text"
-						placeholder={this.state.firstName}
-
-					/>
-					<button type="submit">Update</button>
+					<div>First Name: </div>
+					<div>
+						<input
+							type="text"
+							value={this.state.firstName}
+							onChange={e => this.setState({ firstName: e.target.value })}
+						/>
+					</div>
+					<div>
+						<button type="submit">Update</button>
+					</div>
 				</form>
 				<form
 					onSubmit={e => {
@@ -182,26 +129,17 @@ class Content extends Component {
 						this.updateUserInfo('lastName');
 					}}
 				>
-					<span>Last Name: </span>
+					<div>Last Name: </div>
+					<div>
 					<input
 						type="text"
-						placeholder={this.state.lastName}
-
+						value={this.state.lastName}
+						onChange={e => this.setState({ lastName: e.target.value })}
 					/>
+					</div>
+					<div>
 					<button type="submit">Update</button>
-				</form>
-				<form
-					onSubmit={e => {
-						e.preventDefault();
-						this.updateUserInfo('username');
-					}}
-				>
-					<span>Username: </span>
-					<input
-						type="text"
-						placeholder={this.state.username}
-					/>
-					<button type="submit">Update</button>
+					</div>
 				</form>
 				<form
 					onSubmit={e => {
@@ -209,15 +147,31 @@ class Content extends Component {
 						this.updateUserInfo('email');
 					}}
 				>
-					<span>Email Address: </span>
-					<input
+					<div>Email Address: </div>
+					<div><input
 						type="text"
-						placeholder={this.state.email}
-
-					/>
-					<button type="submit">Update</button>
+						value={this.state.email}
+						contentEditable="true"
+						onChange={e => this.setState({ email: e.target.value })}
+					/></div>
+					<div><button type="submit">Update</button></div>
+					
+				{/* <!-- The Modal --> */}
+				<div id="myModal"
+						 style={{display: this.state.style}}
+						 className="modal"
+				>
+					{/* <!-- Modal content --> */}
+					<div className="modal-content">
+						<span className="close"
+									style={{display: this.state.style}}
+									onClick={this.changeStyle}
+						>&times;</span>
+						<p>Confirmation Email Sent to your New Email. Please Verify.</p>
+					</div>
+				</div>
 				</form>
-
+				</div>
 			</div>
 		)
 	}

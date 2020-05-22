@@ -1,7 +1,24 @@
-.myprofilepage {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
+
+.myprofilepagecon {
+	display: grid;
+	grid-template-rows:  1fr 1fr 1fr;
+	align-items: center;
+	width: 95vw;
+	max-width: 1000px;
+}
+
+.myprofilepage form {
+	display: grid;
+	/* grid-auto-columns: 15% 75% 10%; */
+	grid-template-columns: minMax(92px, 15%) 60% auto;
+	align-items: center;
+	padding: 10px 0;
+	/* padding-right: 20%; */
+}
+
+.myprofilepage input {
+	padding: 10px 5px;
+	width: 95%;
 }
 
 .imagegallery {
