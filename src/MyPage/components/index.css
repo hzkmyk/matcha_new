@@ -1,0 +1,120 @@
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+	top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#myBtn {
+	margin: 200px;
+}
+
+.selectionss {
+	display: flex;
+	flex-wrap: wrap;
+  align-self: center;
+}
+
+.selectionss label {
+	min-width: 60px;
+	width: 100px;
+	padding: 10px 20px;
+	font-size: calc(10px + 0.5vw);
+	text-align: center;
+	background-color: rgb(216, 211, 211);
+	margin: 5px 20px 5px 0;
+}
+
+.togglee input[type="radio"] {
+	display: none;
+	opacity: 0;
+	align-self: center;
+}
+
+.togglee input[type="radio"]:checked + label {
+	background-color: rgb(79, 153, 153);
+}
+
+.myprofilepage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+  /* width: 50%; */
+}
+
+.whohas {
+  background-color: powderblue;
+  padding: 10px;
+}
+
+.seenpeople {
+  background-color: whitesmoke;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+
+.myprofilepagecon {
+	display: grid;
+	grid-template-rows:  1fr 1fr 1fr;
+	align-items: center;
+	width: 95vw;
+	max-width: 1000px;
+}
+
+.myprofilepage form {
+	display: grid;
+	grid-template-columns: minMax(110px, 15%) 55% auto;
+	align-items: center;
+	padding: 10px 0;
+}
+
+.myprofilepage input {
+	padding: 10px 5px;
+	width: 95%;
+}
+
+.imagegallery {
+	margin: 20px;
+}
+
+.prof {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.profName {
+	font-size: calc(12px + 1.2vw);
+}
