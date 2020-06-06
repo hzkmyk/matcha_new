@@ -21,6 +21,7 @@ import VerifyNewEmail from '../VerifyNewEmail';
 import Profile from '../MyPage/profile';
 import Seen from '../MyPage/seen';
 import Liked from '../MyPage/liked';
+import MyPage from '../MyPage'
 
 class MyRoute extends Component {
 	render() {
@@ -40,6 +41,7 @@ class MyRoute extends Component {
 				<Route path='/success' component={Success} />
 				<Route path='/feed' component={Feed} />
 				<Route path='/user' component={UserPage} />
+				<Route exact path='/mypage' component={MyPage} />
 				<Route exact path='/mypage/general' component={GeneralInfo} />
 				<Route exact path='/mypage/profile' component={Profile} />
 				<Route exact path='/mypage/seen' component={Seen} />

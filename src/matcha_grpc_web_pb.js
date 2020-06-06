@@ -5,7 +5,7 @@
  */
 
 // GENERATED CODE -- DO NOT EDIT!
-/* eslint-diable */
+/* eslint-disable */
 
 
 const grpc = {};
@@ -493,81 +493,6 @@ proto.matcha.AccountPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.matcha.empty,
- *   !proto.matcha.Reply>}
- */
-const methodDescriptor_Account_test2 = new grpc.web.MethodDescriptor(
-  '/matcha.Account/test2',
-  grpc.web.MethodType.SERVER_STREAMING,
-  proto.matcha.empty,
-  proto.matcha.Reply,
-  /**
-   * @param {!proto.matcha.empty} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.matcha.Reply.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.matcha.empty,
- *   !proto.matcha.Reply>}
- */
-const methodInfo_Account_test2 = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.matcha.Reply,
-  /**
-   * @param {!proto.matcha.empty} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.matcha.Reply.deserializeBinary
-);
-
-
-/**
- * @param {!proto.matcha.empty} request The request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.matcha.Reply>}
- *     The XHR Node Readable Stream
- */
-proto.matcha.AccountClient.prototype.test2 =
-    function(request, metadata) {
-  return this.client_.serverStreaming(this.hostname_ +
-      '/matcha.Account/test2',
-      request,
-      metadata || {},
-      methodDescriptor_Account_test2);
-};
-
-
-/**
- * @param {!proto.matcha.empty} request The request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.matcha.Reply>}
- *     The XHR Node Readable Stream
- */
-proto.matcha.AccountPromiseClient.prototype.test2 =
-    function(request, metadata) {
-  return this.client_.serverStreaming(this.hostname_ +
-      '/matcha.Account/test2',
-      request,
-      metadata || {},
-      methodDescriptor_Account_test2);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
  *   !proto.matcha.userID,
  *   !proto.matcha.User>}
  */
@@ -1038,6 +963,81 @@ proto.matcha.AccountPromiseClient.prototype.feed =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.matcha.empty,
+ *   !proto.matcha.User>}
+ */
+const methodDescriptor_Account_seenHistory = new grpc.web.MethodDescriptor(
+  '/matcha.Account/seenHistory',
+  grpc.web.MethodType.SERVER_STREAMING,
+  proto.matcha.empty,
+  proto.matcha.User,
+  /**
+   * @param {!proto.matcha.empty} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.matcha.User.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.matcha.empty,
+ *   !proto.matcha.User>}
+ */
+const methodInfo_Account_seenHistory = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.matcha.User,
+  /**
+   * @param {!proto.matcha.empty} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.matcha.User.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.matcha.empty} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.matcha.User>}
+ *     The XHR Node Readable Stream
+ */
+proto.matcha.AccountClient.prototype.seenHistory =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/matcha.Account/seenHistory',
+      request,
+      metadata || {},
+      methodDescriptor_Account_seenHistory);
+};
+
+
+/**
+ * @param {!proto.matcha.empty} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.matcha.User>}
+ *     The XHR Node Readable Stream
+ */
+proto.matcha.AccountPromiseClient.prototype.seenHistory =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/matcha.Account/seenHistory',
+      request,
+      metadata || {},
+      methodDescriptor_Account_seenHistory);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.matcha.loginRequest,
  *   !proto.matcha.Session>}
  */
@@ -1432,6 +1432,81 @@ proto.matcha.AccountPromiseClient.prototype.test =
       request,
       metadata || {},
       methodDescriptor_Account_test);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.matcha.empty,
+ *   !proto.matcha.Reply>}
+ */
+const methodDescriptor_Account_test2 = new grpc.web.MethodDescriptor(
+  '/matcha.Account/test2',
+  grpc.web.MethodType.SERVER_STREAMING,
+  proto.matcha.empty,
+  proto.matcha.Reply,
+  /**
+   * @param {!proto.matcha.empty} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.matcha.Reply.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.matcha.empty,
+ *   !proto.matcha.Reply>}
+ */
+const methodInfo_Account_test2 = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.matcha.Reply,
+  /**
+   * @param {!proto.matcha.empty} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.matcha.Reply.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.matcha.empty} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.matcha.Reply>}
+ *     The XHR Node Readable Stream
+ */
+proto.matcha.AccountClient.prototype.test2 =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/matcha.Account/test2',
+      request,
+      metadata || {},
+      methodDescriptor_Account_test2);
+};
+
+
+/**
+ * @param {!proto.matcha.empty} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.matcha.Reply>}
+ *     The XHR Node Readable Stream
+ */
+proto.matcha.AccountPromiseClient.prototype.test2 =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/matcha.Account/test2',
+      request,
+      metadata || {},
+      methodDescriptor_Account_test2);
 };
 
 

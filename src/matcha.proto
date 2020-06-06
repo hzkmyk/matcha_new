@@ -2,8 +2,6 @@ syntax = "proto3";
 package matcha;
 //import "google/api/annotations.proto";
 //import "google/protobuf/timestamp.proto";
-
-
 service forgotPassword {
   rpc sendEmail (sendEmailRequest) returns (Reply);
   rpc resetPassword (resetPassRequest) returns (Reply);
@@ -32,18 +30,19 @@ message verifyRequest {
   string hash = 2;
 }
 service Account {
-  rpc test2(empty) returns (stream Reply);
   rpc getUser (userID) returns (User);//use useID message
   rpc getImages (imageRequest) returns (stream imageData);
   rpc updateUser (User) returns (Reply);
   rpc verifyNewEmail (verifyRequest) returns (Reply);
   rpc updateImage (imageData) returns (Reply);
   rpc feed (browseRequest) returns(stream User);
+  rpc seenHistory (empty) returns (stream User);
   rpc loginUser (loginRequest) returns(Session);
   rpc getLikedStatus (userID) returns (likedStatus); //use useID message
   rpc likeUser (userID) returns (likedStatus);//use useID message
   rpc blockUser (userID) returns (Reply);
   rpc test (testing) returns (Reply);
+  rpc test2(empty) returns (stream Reply);
   // deleteUser
 }
 message browseRequest {

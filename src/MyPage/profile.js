@@ -48,9 +48,10 @@ class Profile extends Component {
     };
 
     const menuItems = [
+			{ icon: <Link to="../mypage">M</Link>, text: "My Page"},
 			{ icon: <Link to="../mypage/general">G</Link>, text: "General Info"},
       { icon: `P`, text: "Profile" },
-      { icon: `I`, text: "Images" },
+      { icon: <Link to="../mypage/images">I</Link>, text: "Images"},
       { icon: <Link to="../mypage/seen">S</Link>, text: "Seen History"},
       { icon: <Link to="../mypage/liked">L</Link>, text: "Like History"}
 		];

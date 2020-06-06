@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { withCookies } from 'react-cookie';
+import React, { Component } from "react"
+import { withCookies } from 'react-cookie'
 import "./index.css"
-const { User } = require('../../matcha_pb');
-const request = new User();
+const { User } = require('../../matcha_pb')
+const request = new User()
 
 class SeenCon extends Component {
 	constructor(props) {

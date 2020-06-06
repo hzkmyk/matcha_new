@@ -44,7 +44,6 @@ class Test extends Component {
 		try {
 			const data = await this.getImages();
 			this.setState({data});
-			// console.log(`statedata is ${this.state.data}`);
 		} catch(error) {
 			console.log(error.response);
 		}

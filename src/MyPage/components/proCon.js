@@ -20,7 +20,9 @@ class ProCon extends Component {
 			bio: 'Bio',
 			age: 20,
 			location: 'Location',
-			style: "none"
+			style: "none",
+			value: '',
+			interestAdded: false,
 		}
 	}
 
@@ -40,6 +42,7 @@ class ProCon extends Component {
 			'user_id': uid,
 			'session_id': session_id
 		}
+		console.log(this.state.interests)
 		switch (updatedInfo) {
 			case 'gender':
 				request.setGender(this.state.gender);
@@ -50,17 +53,19 @@ class ProCon extends Component {
 			case 'age':
 				request.setAge(this.state.age);
 				break;
-				case 'location':
-					request.setLoaction(this.state.location);
-					break;
-				case 'interests':
-					request.addTags(this.state.interests);
-					break;
-				case 'bio':
-					request.setBio(this.state.bio);
-					break;
-				default:
+			case 'interests':
+				for (const interest in this.state.interests) {
+					request.addTags(this.state.interests[interest]);
+				}
 				break;
+			case 'location':
+				request.setLoaction(this.state.location);
+				break;
+			case 'bio':
+				request.setBio(this.state.bio);
+				break;
+			default:
+			break;
 		}
 		window.Aclient.updateUser(request, metaData, (err, reply) => {
 			if (err) {
@@ -113,9 +118,27 @@ class ProCon extends Component {
 						pre3: 'male'
 					})
 				}
-				console.log(this.state.pre1, this.state.pre2, this.state.pre3)
 			}
 		})
+	}
+
+	addInterests = async () => {
+		return new Promise((resolve, reject) =>{
+			this.setState(state => {
+				const interests = state.interests.concat(state.value);
+				return {
+					interests,
+					value: '',
+				};
+			});
+			this.setState({ interestAdded: true });
+			resolve()
+		}) 
+	};
+
+	updateInterests = async () => {
+		await this.addInterests();
+		this.updateUserInfo('interests')
 	}
 
 	render() {
@@ -240,19 +263,25 @@ class ProCon extends Component {
 				<form
 					onSubmit={e => {
 						e.preventDefault();
-						this.updateUserInfo('interests');
+						this.updateInterests();
 					}}
 				>
 					<div>Interests: </div>
 					<div>
 					<input
 						type="text"
-						value={this.state.interests}
-						onChange={e => this.setState({ interests: e.target.value })}
+						value={this.state.value}
+						onChange={e => this.setState({ value: e.target.value })}
 					/>
 					</div>
-					<div>
-					<button type="submit">Update</button>
+					<div><button type="submit"
+									disabled={!this.state.value}
+					>Update</button></div>
+					<div></div>
+					<div className="addedinterests">
+						{this.state.interests.map((value, i) => {
+						return <div key={i}>{value}</div>
+					})}
 					</div>
 				</form>
 				<form

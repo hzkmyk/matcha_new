@@ -105,16 +105,22 @@
 	width: 95%;
 }
 
-.imagegallery {
-	margin: 20px;
-}
-
 .prof {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
 
 .profName {
 	font-size: calc(12px + 1.2vw);
+}
+
+.interesttags {
+	margin: 15px 0;
+}
+
+.interesttag {
+	background-color: rgb(79, 153, 153);
+	color: white;
+	margin: 0 5px;
+	padding: 5px;
 }

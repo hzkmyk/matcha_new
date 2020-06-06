@@ -48,9 +48,10 @@ class Liked extends Component {
     };
 
     const menuItems = [
+			{ icon: <Link to="../mypage">M</Link>, text: "My Page"},
 			{ icon: <Link to="../mypage/general">G</Link>, text: "General Info"},
       { icon: <Link to="../mypage/profile">P</Link>, text: "Profile"},
-      { icon: `I`, text: "Images" },
+      { icon: <Link to="../mypage/images">I</Link>, text: "Images"},
       { icon: <Link to="../mypage/seen">S</Link>, text: "Seen History"},
       { icon: `L`, text: "Like History"}
 		];

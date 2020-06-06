@@ -5,6 +5,7 @@ import "../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 import './index.css'
 const { User } = require('../matcha_pb');
 const { imageRequest } = require('../matcha_pb');
+const { userID } = require('../matcha_pb')
 
 class UserPage extends Component {
 	constructor(props) {
@@ -27,7 +28,8 @@ class UserPage extends Component {
 			images: [{
 				original: '',
 				thumbnail: ''
-			}]
+			}],
+			like: '🤍'
 		}
 	}
 
@@ -63,7 +65,31 @@ class UserPage extends Component {
 					bio: reply.getBio(),
 					seenHistory: reply.getSeenhistoryList()
 				});
+				switch(this.state.gender) {
+					case 'female':
+						this.setState({ gender: '🚺' })
+						break;
+					case 'male':
+						this.setState({ gender: '🚹'})
+						break;
+					default:
+						break;
+				}
+				switch(this.state.preference) {
+					case 'female':
+						this.setState({ preference: '🚺' })
+						break;
+					case 'male':
+						this.setState({ preference: '🚹' })
+						break;
+					case 'both':
+						this.setState({ preference: '🚻' })
+						break;
+					default:
+						break;
+				}
 			}
+			console.log(this.state.interests)
 		})
 	}
 
@@ -96,11 +122,28 @@ class UserPage extends Component {
 			})
 		})
 	}
+
+	setLike = () => {
+		if (this.state.like === '🤍') {
+			this.setState({ like: '❤️'})
+		}
+		const uid = this.props.cookies.get('uid');
+		const temp = this.props.cookies.get('session_id');
+		const request = new userID();
+		request.setUserid(2)
+		let metadata = {
+			'user_id': uid,
+			'session_id': temp
+		}
+		window.Aclient.likeUser(request, metadata, (err, reply) => {
+		})
+	}
 					
 	allSet = async () => {
 		try {
 			const data = await this.getImages();
 			this.setState({data});
+			console.log(data)
 		} catch(error) {
 			console.log(error.response);
 		}
@@ -125,15 +168,13 @@ class UserPage extends Component {
 				</div>
 				<div className="prof">
 					<div className="profTop">
-						<span className="profName">{this.state.firstName} {this.state.lastName}</span>,{this.state.age}({this.state.username})
+						<span className="profName">{this.state.firstName} {this.state.lastName}</span>,{this.state.age}({this.state.username})<span className="like" onClick={this.setLike}> {this.state.like}</span>
 					</div>
-					<div className="profBio">"{this.state.bio}"</div>
-					<div className="genPrefBio">{this.state.gender} looking for a {this.state.preference}</div>
-					<div>Location: {this.state.location}</div>
-					<div>Fame Rating: {this.state.fameRating}%</div>
-					<div>Interested in {this.state.interests.map((value, i) => {
-						return <span key={i}>{value} </span>
+					<div><span>📍 {this.state.location}, </span><span>FR: {this.state.fameRating}%, </span><span>{this.state.gender} ❤️ {this.state.preference}</span></div>
+					<div className="interesttags">{this.state.interests.map((value, i) => {
+						return <span className="interesttag" key={i}>{value}</span>
 					})}</div>
+					<div className="profBio">"{this.state.bio}"</div>
 				</div>
 			</div>
 		)

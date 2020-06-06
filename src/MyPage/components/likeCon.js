@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { withCookies } from 'react-cookie';
 import "./index.css"
-const { User } = require('../../matcha_pb');
-const request = new User();
+const { likedStatus } = require('../../matcha_pb');
+const request = new likedStatus();
 
 class LikeCon extends Component {
 	constructor(props) {
@@ -30,7 +30,7 @@ class LikeCon extends Component {
 			'user_id': uid,
 			'session_id': session_id
 		}
-		request.setId(uid);
+		// request.setId(uid);
 		window.Aclient.getUser(request, metaData, (err, reply) => {
 			if (err) {
 				console.log(err.code);
